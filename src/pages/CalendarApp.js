@@ -10,9 +10,27 @@ const CalendarApp = () => {
   };
 
   return (
-    <div className="container  my-8">
+    <div className="container"
+    style={{
+      marginTop: {
+        xs: "10px",
+        sm: " 14px",
+        md: '20px',
+        lg: " 26px",
+        xl:" 32px"
+      },
+      marginLeft: {
+        xs: "10px",
+        sm: " 14px",
+        md: '20px',
+        lg: " 26px",
+        xl:" 32px"
+      }
+    }}
+    >
       <MonthSelector selectedMonth={selectedMonth} onMonthChange={handleMonthChange} />
       <CalendarMonth selectedMonth={selectedMonth} />
+      
     </div>
   );
 };

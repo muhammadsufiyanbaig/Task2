@@ -5,6 +5,7 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  Box,
 } from "@mui/material";
 import { Popover, Button } from "@mui/material";
 import Eventsdata from "./Eventsdata.json";
@@ -77,11 +78,21 @@ const CalendarMonth = ({ selectedMonth }) => {
           marginBottom: "16px",
         }}
       >{`${monthName} ${year}`}</h2>
-      <div
-        style={{
-          width: "1250px",
-          margin: "auto",
+      <Box
+        sx={{
+          width: {
+            xs: "100%",
+            sm: "100%",
+            md: "100%",
+            lg: "1260px",
+            xl: "1260px",
+          },
+          margin: {
+            xs: "2px",
+            xl: "auto",
+          },
         }}
+        style={{}}
       >
         <div
           style={{
@@ -101,77 +112,150 @@ const CalendarMonth = ({ selectedMonth }) => {
             "Saturday",
             "Sunday",
           ].map((day) => (
-            <div
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                  sm: "100%",
+                  md: "100%",
+                  lg: "180px",
+                  xl: "180px",
+                },
+                paddingLeft: {
+                  xs: "2px",
+                  sm: "2px",
+                  md: "4px",
+                  lg: "10px",
+                  xl: "10px",
+                },
+                paddingRight: {
+                  xs: "2px",
+                  sm: "4px",
+                  md: "6px",
+                  lg: "10px",
+                  xl: "10px",
+                },
+                fontSize: {
+                  xs: "10px",
+                  sm: "10px",
+                  md: "10px",
+                  lg: "20px",
+                  xl: "20px",
+                },
+                lineHeight: {
+                  xs: "15px",
+                  sm: "15px",
+                  md: "20px",
+                  lg: "40px",
+                  xl: "40px",
+                },
+              }}
               key={day}
               style={{
                 fontWeight: 700,
-                paddingLeft: "12px",
-                paddingRight: "12px",
-                width: "180px",
                 textAlign: "center",
                 borderLeftWidth: "1px",
                 borderRightWidth: "1px",
                 borderBottomWidth: "1px",
-                fontSize: "20px",
-                lineHeight: "40px",
                 borderColor: "#9CA3AF",
               }}
             >
               {day}
-            </div>
+            </Box>
           ))}
           {[...Array(firstDayIndex - 1).fill(null), ...daysArray].map(
             (day, index) => (
-              <div
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                    sm: "100%",
+                    md: "100%",
+                    lg: "180px",
+                    xl: "180px",
+                  },
+                  height: {
+                    xs: "40px",
+                    sm: "50px",
+                    md: "70px",
+                    lg: "100px",
+                    xl: "100px",
+                  },
+                  fontSize: {
+                    xs: "10px",
+                    sm: "12px",
+                    md: "14px",
+                    lg: "24px",
+                    xl: "24px",
+                  },
+                  lineHeight: {
+                    xs: "15px",
+                    sm: "18px",
+                    md: "21px",
+                    lg: "32px",
+                    xl: "32px",
+                  },
+                }}
                 key={index}
-              
                 style={{
                   borderWidth: "1px",
-                  top: "8px",
-                  right: "8px",
+                  paddingRight: "2px",
                   borderColor: "#9CA3AF",
                   fontWeight: 700,
-                    cursor: "pointer",
-                  height:"100px",
-                  width: "180px",
-                    fontSize: "24px",
-                    lineHeight: "32px",
-                    position: "relative",
-                    backgroundColor:
-                      getEventCountForDate(day) >= 20
-                        ? "#3B82F6"
-                        : getEventCountForDate(day) >= 10
-                        ? "#60A5FA"
-                        : getEventCountForDate(day) >= 1
-                        ? "#BFDBFE"
-                        : "",
-                 
+                  cursor: "pointer",
+                  position: "relative",
+                  backgroundColor:
+                    getEventCountForDate(day) >= 20
+                      ? "#3B82F6"
+                      : getEventCountForDate(day) >= 10
+                      ? "#60A5FA"
+                      : getEventCountForDate(day) >= 1
+                      ? "#BFDBFE"
+                      : "",
                 }}
                 onClick={(event) => handleDayClick(event, day)}
               >
                 {day > 0 && (
                   <div>
-                    <div
-                      style={{
-                        paddingLeft: "20px",
+                    <Box
+                      sx={{
+                        paddingLeft: {
+                          xs: "2px",
+                          sm: "2px",
+                          md: "4px",
+                          lg: "6px",
+                          xl: "8px",
+                        },
                       }}
                     >
                       {day}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: "18px",
-                        lineHeight: "28px",
+                    </Box>
+                    <Box
+                      sx={{
+                        fontSize: {
+                          xs: "6px",
+                          sm: "10px",
+                          md: "12px",
+                          lg: "16px",
+                          xl: "18px",
+                        },
+                        lineHeight: {
+                          xs: "10px",
+                          sm: "15px",
+                          md: "18px",
+                          lg: "28px",
+                          xl: "28px",
+                        },
                         textAlign: "center",
                         fontWeight: 600,
                         cursor: "pointer",
                       }}
                     >
                       ({getEventCountForDate(day)})
-                    </div>
+                    </Box>
                   </div>
                 )}
-              </div>
+              </Box>
             )
           )}
         </div>
@@ -197,7 +281,29 @@ const CalendarMonth = ({ selectedMonth }) => {
           }}
         >
           {selectedEvent && selectedEvent.length > 0 ? (
-            <div className="font-bold py-2 px-5">Events</div>
+            <div
+              style={{
+                fontWeight: 700,
+                paddingTop: "8px",
+                paddingBottom: "8px",
+                paddingRight: {
+                  xs: "12px",
+                  sm: "10px",
+                  md: "12px",
+                  lg: "20px",
+                  xl: "20px",
+                },
+                paddingLeft: {
+                  xs: "10px",
+                  sm: "10px",
+                  md: "12px",
+                  lg: "20px",
+                  xl: "20px",
+                },
+              }}
+            >
+              Events
+            </div>
           ) : (
             ""
           )}
@@ -205,13 +311,169 @@ const CalendarMonth = ({ selectedMonth }) => {
           <div>
             {selectedEvent && selectedEvent.length > 0 ? (
               <Table
+                style={{
+                  overflowY: "auto",
+                  overflowX: "auto",
+                }}
               >
                 <TableHead>
                   <TableRow>
-                    <TableCell>Event Name</TableCell>
-                    <TableCell>Event Time</TableCell>
-                    <TableCell>Asset</TableCell>
-                    <TableCell>Event Type</TableCell>
+                    <TableCell
+                      sx={{
+                        paddingLeft: {
+                          xs: "12px",
+                          sm: "10px",
+                          md: "12px",
+                          lg: "20px",
+                          xl: "20px",
+                        },
+                        paddingRight: {
+                          xs: "12px",
+                          sm: "10px",
+                          md: "12px",
+                          lg: "20px",
+                          xl: "20px",
+                        },
+                        paddingTop: {
+                          xs: "2px",
+                          sm: "2px",
+                          md: "6px",
+                          lg: "8px",
+                          xl: "8px",
+                        },
+                        paddingBottom: {
+                          xs: "2px",
+                          sm: "2px",
+                          md: "6px",
+                          lg: "8px",
+                          xl: "8px",
+                        },
+                      }}
+                      style={{
+                        border: "1px solid #ccc",
+                        fontWeight: 700,
+                        lineHeight: "18px",
+                      }}
+                    >
+                      Event Name
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        paddingLeft: {
+                          xs: "12px",
+                          sm: "10px",
+                          md: "12px",
+                          lg: "20px",
+                          xl: "20px",
+                        },
+                        paddingRight: {
+                          xs: "12px",
+                          sm: "10px",
+                          md: "12px",
+                          lg: "20px",
+                          xl: "20px",
+                        },
+                        paddingTop: {
+                          xs: "2px",
+                          sm: "2px",
+                          md: "6px",
+                          lg: "8px",
+                          xl: "8px",
+                        },
+                        paddingBottom: {
+                          xs: "2px",
+                          sm: "2px",
+                          md: "6px",
+                          lg: "8px",
+                          xl: "8px",
+                        },
+                      }}
+                      style={{
+                        border: "1px solid #ccc",
+                        fontWeight: 700,
+                        lineHeight: "18px",
+                      }}
+                    >
+                      Event Time
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        paddingLeft: {
+                          xs: "12px",
+                          sm: "10px",
+                          md: "12px",
+                          lg: "20px",
+                          xl: "20px",
+                        },
+                        paddingRight: {
+                          xs: "12px",
+                          sm: "10px",
+                          md: "12px",
+                          lg: "20px",
+                          xl: "20px",
+                        },
+                        paddingTop: {
+                          xs: "2px",
+                          sm: "2px",
+                          md: "6px",
+                          lg: "8px",
+                          xl: "8px",
+                        },
+                        paddingBottom: {
+                          xs: "2px",
+                          sm: "2px",
+                          md: "6px",
+                          lg: "8px",
+                          xl: "8px",
+                        },
+                      }}
+                      style={{
+                        border: "1px solid #ccc",
+                        fontWeight: 700,
+                        lineHeight: "18px",
+                      }}
+                    >
+                      Asset
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        paddingLeft: {
+                          xs: "12px",
+                          sm: "10px",
+                          md: "12px",
+                          lg: "20px",
+                          xl: "20px",
+                        },
+                        paddingRight: {
+                          xs: "12px",
+                          sm: "10px",
+                          md: "12px",
+                          lg: "20px",
+                          xl: "20px",
+                        },
+                        paddingTop: {
+                          xs: "2px",
+                          sm: "2px",
+                          md: "6px",
+                          lg: "8px",
+                          xl: "8px",
+                        },
+                        paddingBottom: {
+                          xs: "2px",
+                          sm: "2px",
+                          md: "6px",
+                          lg: "8px",
+                          xl: "8px",
+                        },
+                      }}
+                      style={{
+                        border: "1px solid #ccc",
+                        fontWeight: 700,
+                        lineHeight: "18px",
+                      }}
+                    >
+                      Event Type
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -228,12 +490,156 @@ const CalendarMonth = ({ selectedMonth }) => {
                     );
                     return (
                       <TableRow key={index}>
-                        <TableCell>{event.title.en}</TableCell>
-                        <TableCell>{formattedTime}</TableCell>
-                        <TableCell>
+                        <TableCell
+                          sx={{
+                            paddingLeft: {
+                              xs: "12px",
+                              sm: "10px",
+                              md: "12px",
+                              lg: "20px",
+                              xl: "20px",
+                            },
+                            paddingRight: {
+                              xs: "12px",
+                              sm: "10px",
+                              md: "12px",
+                              lg: "20px",
+                              xl: "20px",
+                            },
+                            paddingTop: {
+                              xs: "2px",
+                              sm: "2px",
+                              md: "6px",
+                              lg: "8px",
+                              xl: "8px",
+                            },
+                            paddingBottom: {
+                              xs: "2px",
+                              sm: "2px",
+                              md: "6px",
+                              lg: "8px",
+                              xl: "8px",
+                            },
+                          }}
+                          style={{
+                            border: "1px solid #ccc",
+                            lineHeight: "18px",
+                          }}
+                        >
+                          {event.title.en}
+                        </TableCell>
+                        <TableCell
+                          sx={{
+                            paddingLeft: {
+                              xs: "12px",
+                              sm: "10px",
+                              md: "12px",
+                              lg: "20px",
+                              xl: "20px",
+                            },
+                            paddingRight: {
+                              xs: "12px",
+                              sm: "10px",
+                              md: "12px",
+                              lg: "20px",
+                              xl: "20px",
+                            },
+                            paddingTop: {
+                              xs: "2px",
+                              sm: "2px",
+                              md: "6px",
+                              lg: "8px",
+                              xl: "8px",
+                            },
+                            paddingBottom: {
+                              xs: "2px",
+                              sm: "2px",
+                              md: "6px",
+                              lg: "8px",
+                              xl: "8px",
+                            },
+                          }}
+                          style={{
+                            border: "1px solid #ccc",
+                            lineHeight: "18px",
+                          }}
+                        >
+                          {formattedTime}
+                        </TableCell>
+                        <TableCell
+                          sx={{
+                            paddingLeft: {
+                              xs: "12px",
+                              sm: "10px",
+                              md: "12px",
+                              lg: "20px",
+                              xl: "20px",
+                            },
+                            paddingRight: {
+                              xs: "12px",
+                              sm: "10px",
+                              md: "12px",
+                              lg: "20px",
+                              xl: "20px",
+                            },
+                            paddingTop: {
+                              xs: "2px",
+                              sm: "2px",
+                              md: "6px",
+                              lg: "8px",
+                              xl: "8px",
+                            },
+                            paddingBottom: {
+                              xs: "2px",
+                              sm: "2px",
+                              md: "6px",
+                              lg: "8px",
+                              xl: "8px",
+                            },
+                          }}
+                          style={{
+                            border: "1px solid #ccc",
+                            lineHeight: "18px",
+                          }}
+                        >
                           {event.coins.map((coin) => coin.fullname).join(", ")}
                         </TableCell>
-                        <TableCell>
+                        <TableCell
+                          sx={{
+                            paddingLeft: {
+                              xs: "12px",
+                              sm: "10px",
+                              md: "12px",
+                              lg: "20px",
+                              xl: "20px",
+                            },
+                            paddingRight: {
+                              xs: "12px",
+                              sm: "10px",
+                              md: "12px",
+                              lg: "20px",
+                              xl: "20px",
+                            },
+                            paddingTop: {
+                              xs: "2px",
+                              sm: "2px",
+                              md: "6px",
+                              lg: "8px",
+                              xl: "8px",
+                            },
+                            paddingBottom: {
+                              xs: "2px",
+                              sm: "2px",
+                              md: "6px",
+                              lg: "8px",
+                              xl: "8px",
+                            },
+                          }}
+                          style={{
+                            border: "1px solid #ccc",
+                            lineHeight: "18px",
+                          }}
+                        >
                           {event.categories
                             .map((category) => category.name)
                             .join(", ")}
@@ -248,7 +654,7 @@ const CalendarMonth = ({ selectedMonth }) => {
             )}
           </div>
         </Popover>
-      </div>
+      </Box>
     </>
   );
 };

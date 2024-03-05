@@ -14,23 +14,55 @@ const MonthSelector = ({ selectedMonth, onMonthChange }) => {
     const newMonth = new Date(parseInt(year), parseInt(monthIndex));
     onMonthChange(newMonth);
   };
-  const monthName = selectedMonth.toLocaleString('default', { month: 'long' });
+
   return (
-    <div className="flex justify-start space-x-2 items-center my-4 pr-10">
+    <div 
+      style={{
+        display: "flex",
+        justifyContent: "flex-start",
+        alignItems:"center", 
+        marginTop: "16px",
+        marginBottom: "16px",
+        paddingRight: "40px",
+        marginLeft: "8px",
+        marginRight: "8px",
+      }}
+    >
       <select
-        value={monthName}
+        value={`${selectedMonth.getFullYear()}-${selectedMonth.getMonth()}`}
         onChange={handleChange}
-        className="px-6 py-4 bg-transparent rounded-md font-bold text-xl text-gray-500"
+        style={{
+          paddingRight: "24px",
+          paddingLeft: "24px",
+          paddingTop: "16px",
+          paddingBottom: "16px",
+          backgroundColor: "transparent",
+          fontWeight: 700,
+          fontSize: "20px",
+          lineHeight: "28px", 
+          color: "rgb(107 ,114 ,128,)",
+          minWidth: "100px"
+        }}
       >
         {months.map((month, index) => (
-          <option key={month} className="block w-full px-6 py-4 bg-white hover:bg-gray-100" value={`${selectedMonth.getFullYear()}-${index}`}>{month}</option>
+          <option key={month} value={`${selectedMonth.getFullYear()}-${index}`}>{month}</option>
         ))}
       </select>
 
       <select
         value={`${selectedMonth.getFullYear()}-${selectedMonth.getMonth()}`}
         onChange={handleChange}
-        className=" px-6 py-4 bg-transparent rounded-md font-bold text-xl text-gray-500"
+        style={{
+          paddingRight: "24px",
+          paddingLeft: "24px",
+          paddingTop: "16px",
+          paddingLeft: "16px",
+          backgroundColor: "transparent",
+          fontWeight: 700,
+          fontSize:"20px",
+          lineHeight: "28px",
+          color: "rgb(107 114 128)"
+        }}
       >
         {years.map(year => (
           <option key={year} value={`${year}-0`}>{year}</option>
